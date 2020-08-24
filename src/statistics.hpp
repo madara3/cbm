@@ -34,7 +34,7 @@ struct Statistics {
 		       rx_frame, rx_compressed, rx_multicast,
 		       tx_bytes, tx_packets, tx_errs, tx_drop, tx_fifo,
 		       tx_frame, tx_compressed, tx_multicast,
-                       rx_max_bytes,tx_mqx_bytes;
+                       rx_max_bytes,tx_max_bytes;
 };
 
 class Interface {
