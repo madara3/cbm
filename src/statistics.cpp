@@ -34,7 +34,9 @@
 
 namespace statistics {
 
-Interface::Interface(const std::string& name) : name_(name), updated_(false) {}
+Interface::Interface(const std::string& name) : name_(name), updated_(false) {
+	rx_max_bytes = tx_max_bytes = 0;
+}
 
 class InterfaceNameMatchesPredicate {
     public:
@@ -67,6 +69,8 @@ void Interface::update(const Statistics& statistics) {
 
     receiveSpeed_ = (x1.rx_bytes - x0.rx_bytes) / timeDelta;
     transmitSpeed_ = (x1.tx_bytes - x0.tx_bytes) / timeDelta;
+    rx_max_bytes = max(receiveSpeed_,rx_max_bytes);
+    tx_max_bytes = max(transmitSpeed_,tx_max_bytes);
 
     updated_ = true;
 }
